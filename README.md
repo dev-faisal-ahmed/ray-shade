@@ -27,3 +27,13 @@
 - JWT
 
 ### Live Site Link || <a href="https://ray-shade-client.vercel.app/">Click Here </a>
+
+### Login as a seller
+
+- Email : faisal@gmail.com
+- Password : 123456
+
+### Login as a Admin
+
+- Email : admin@rayshade.com
+- Password : 123456
