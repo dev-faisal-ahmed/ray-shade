@@ -1,5 +1,3 @@
-
-
 import { Bar, BarChart, XAxis } from 'recharts';
 import * as card from '@/components/ui/card';
 import * as chart from '@/components/ui/chart';

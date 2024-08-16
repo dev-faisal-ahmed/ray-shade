@@ -33,29 +33,32 @@ export function ProfileIcon({
     navigate('/login');
   };
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <div
-          className='flex cursor-pointer items-center justify-center rounded-full'
-          style={{ width: size, height: size, backgroundColor: '#075e54' }}
-        >
-          {image ? (
-            <img src={image} alt={name} />
-          ) : (
-            <p className='text-xl font-bold text-white'>{name[0]}</p>
-          )}
-        </div>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={8} align='end' className='min-w-52'>
-        <DropdownMenuLabel>
-          <h1 className='text-lg font-semibold'>{name}</h1>
-          <p>{email}</p>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <Button onClick={handleLogOut} className='w-full'>
-          LogOut
-        </Button>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className='flex items-center gap-3'>
+      <h2 className='text-lg font-semibold'>{name}</h2>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div
+            className='flex cursor-pointer items-center justify-center rounded-full'
+            style={{ width: size, height: size, backgroundColor: '#075e54' }}
+          >
+            {image ? (
+              <img src={image} alt={name} />
+            ) : (
+              <p className='text-xl font-bold text-white'>{name[0]}</p>
+            )}
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent sideOffset={8} align='end' className='min-w-52'>
+          <DropdownMenuLabel>
+            <h1 className='text-lg font-semibold'>{name}</h1>
+            <p>{email}</p>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <Button onClick={handleLogOut} className='w-full'>
+            LogOut
+          </Button>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 }
