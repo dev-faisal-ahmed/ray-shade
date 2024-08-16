@@ -16,3 +16,9 @@ AuthRouter.post(
   ValidationHandler(AuthValidation.AuthLoginSchema),
   AuthController.Login
 );
+
+AuthRouter.patch(
+  '/update',
+  ValidationHandler(AuthValidation.UpdateUserSchema),
+  AuthController.UpdateUser
+);

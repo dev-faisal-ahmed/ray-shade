@@ -17,7 +17,7 @@ export function AuthGuard() {
     const user = AuthModel.findById(_id);
     if (!user) throw new AppError('User not found', 404);
 
-    req.user = decodeUser;
+    req.user = user;
     next();
   });
 }

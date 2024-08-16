@@ -21,7 +21,21 @@ const AuthLoginSchema = z.object({
   password: PasswordSubSchema,
 });
 
+const UpdateUserSchema = z.object({
+  name: z
+    .string()
+    .min(2, { message: 'Name has to be more than 1 characters' })
+    .optional(),
+  phone: z.string().optional(),
+  address: z.string().optional(),
+});
+
 export type AuthRegisterPayloadType = z.infer<typeof AuthRegisterSchema>;
 export type AuthLoginPayloadType = z.infer<typeof AuthLoginSchema>;
+export type UpdateUserPayloadType = z.infer<typeof UpdateUserSchema>;
 
-export const AuthValidation = { AuthRegisterSchema, AuthLoginSchema };
+export const AuthValidation = {
+  AuthRegisterSchema,
+  AuthLoginSchema,
+  UpdateUserSchema,
+};

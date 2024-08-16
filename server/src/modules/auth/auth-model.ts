@@ -7,6 +7,8 @@ export const AuthSchema = new Schema<AuthType>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true, select: false },
   role: { type: String, enum: AuthRoles, default: 'USER' },
+  address: { type: String },
+  phone: { type: String },
 });
 
 export const AuthModel = model<AuthType>('user', AuthSchema);

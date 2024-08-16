@@ -23,4 +23,14 @@ const Login = TryCatch(async (req, res) => {
   });
 });
 
-export const AuthController = { Register, Login };
+const UpdateUser = TryCatch(async (req, res) => {
+  const user = await AuthServices.UpdateUser(req.user?._id, req.body);
+
+  return SendSuccessResponse(res, {
+    data: user,
+    message: 'User updated successfully',
+    status: 200,
+  });
+});
+
+export const AuthController = { Register, Login, UpdateUser };

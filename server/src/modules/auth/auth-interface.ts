@@ -8,4 +8,6 @@ export type AuthType = {
   email: string;
   password: string;
   role: AuthRoleType;
+  phone: string;
+  address: string;
 };
