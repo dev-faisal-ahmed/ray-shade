@@ -5,8 +5,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 const token = getTokenFromLocal();
 const user = decodeUser(token);
 
-console.log(user);
-
 const initialState: UserType | null = {
   _id: user?._id as string,
   name: user?.name as string,

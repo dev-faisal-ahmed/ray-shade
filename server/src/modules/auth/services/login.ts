@@ -9,10 +9,7 @@ export async function Login(payload: AuthLoginPayloadType) {
   const { email, password } = payload;
 
   // checking if user exist
-  const user = await AuthModel.findOne(
-    { email },
-    { _id: 1, name: 1, email: 1, password: 1, role: 1 }
-  );
+  const user = await AuthModel.findOne({ email });
 
   // if no user found
   if (!user) throw new AppError('User Not Found', 404);
