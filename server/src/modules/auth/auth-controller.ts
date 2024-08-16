@@ -33,4 +33,14 @@ const UpdateUser = TryCatch(async (req, res) => {
   });
 });
 
-export const AuthController = { Register, Login, UpdateUser };
+const GetMyInfo = TryCatch(async (req, res) => {
+  const user = await AuthServices.GetMyInfo(req.user?._id);
+
+  return SendSuccessResponse(res, {
+    data: user,
+    message: 'User info retrieved successfully',
+    status: 200,
+  });
+});
+
+export const AuthController = { Register, Login, UpdateUser, GetMyInfo };
