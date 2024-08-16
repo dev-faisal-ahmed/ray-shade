@@ -23,7 +23,7 @@ export function RecentOrders() {
         {allOrders?.data && allOrders.data.length > 0 ? (
           <div className='space-y-5'>
             {allOrders.data
-              .slice(0, 10)
+              .slice(6)
               .map(({ _id, productId, date, quantity, price }) => (
                 <div key={_id} className='grid grid-cols-6 gap-5'>
                   <img
