@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  LoginSchemaType,
+  LoginValidationSchema,
+} from '../../../lib/schema/login-validation';
 import toast from 'react-hot-toast';
 import { Input } from '@/components/shared/form/input';
 import { Button } from '@/components/ui/button';
@@ -10,23 +14,36 @@ import { setTokenToLocal } from '@/lib/helper/token-helper';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAppDispatch } from '@/redux/hook';
 import { loginUser } from '@/redux/slices/user-slice';
-import {
-  LoginSchemaType,
-  LoginValidationSchema,
-} from '../../../lib/schema/login-validation';
+import { useEffect, useState } from 'react';
+import { DemoAccountModal } from './demo-account-modal';
 
 export function LoginForm() {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginValidationSchema),
   });
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (email) setValue('email', email);
+    if (password) setValue('password', password);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email, password]);
+
+  // handlers
+  const onEmailChange = (email: string) => setEmail(email);
+  const onPasswordChange = (password: string) => setPassword(password);
 
   const handleRegister = handleSubmit(async (data) => {
     const email = data.email.trim();
@@ -78,7 +95,10 @@ export function LoginForm() {
         register={register}
         required
       />
-
+      <DemoAccountModal
+        onEmailChange={onEmailChange}
+        onPasswordChange={onPasswordChange}
+      />
       <Button className='mt-3 w-full text-white'>Login</Button>
     </form>
   );
