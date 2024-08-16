@@ -3,6 +3,7 @@ import {
   FileStack,
   LayoutDashboard,
   ShoppingBasket,
+  UserIcon,
 } from 'lucide-react';
 
 export const navLinks = [
@@ -25,5 +26,10 @@ export const navLinks = [
     title: 'Sales History',
     url: '/sales',
     icon: <FileStack />,
+  },
+  {
+    title: 'Profile',
+    url: '/profile',
+    icon: <UserIcon />,
   },
 ];

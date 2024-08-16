@@ -25,7 +25,15 @@ export async function Login(payload: AuthLoginPayloadType) {
 
   // making a token
   const token = jwt.sign(
-    { _id: user._id, email: user.email, name: user.name, role: user.role },
+    {
+      _id: user._id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+      phone: user.phone,
+      address: user.address,
+    },
+
     jwtSecret,
     { expiresIn: '30d' }
   );

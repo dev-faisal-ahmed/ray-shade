@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { ValidationHandler } from '../../middleware/validation-handler';
 import { AuthValidation } from './auth-validation';
 import { AuthController } from './auth-controller';
-import { AuthGuard } from '../../middleware/auth-guard';
 
 export const AuthRouter = Router();
 
@@ -18,10 +17,10 @@ AuthRouter.post(
   AuthController.Login
 );
 
+AuthRouter.get('/mine/:myId', AuthController.GetMyInfo);
+
 AuthRouter.patch(
-  '/update',
+  '/update/:myId',
   ValidationHandler(AuthValidation.UpdateUserSchema),
   AuthController.UpdateUser
 );
-
-AuthRouter.get('/mine', AuthGuard, AuthController.GetMyInfo);

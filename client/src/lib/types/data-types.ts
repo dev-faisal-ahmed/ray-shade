@@ -15,6 +15,8 @@ export type UserType = {
   name: string;
   email: string;
   role: UserRoleType;
+  phone?: string;
+  address?: string;
 };
 
 export type ProductType = {

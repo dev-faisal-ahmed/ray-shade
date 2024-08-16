@@ -24,17 +24,17 @@ const Login = TryCatch(async (req, res) => {
 });
 
 const UpdateUser = TryCatch(async (req, res) => {
-  const user = await AuthServices.UpdateUser(req.user?._id, req.body);
+  const token = await AuthServices.UpdateUser(req.params.myId, req.body);
 
   return SendSuccessResponse(res, {
-    data: user,
+    data: { token },
     message: 'User updated successfully',
     status: 200,
   });
 });
 
 const GetMyInfo = TryCatch(async (req, res) => {
-  const user = await AuthServices.GetMyInfo(req.user?._id);
+  const user = await AuthServices.GetMyInfo(req.params.myId);
 
   return SendSuccessResponse(res, {
     data: user,

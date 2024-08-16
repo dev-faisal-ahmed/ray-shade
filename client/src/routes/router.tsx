@@ -13,6 +13,7 @@ const ProductDuplicateEditPage = lazy(
   () => import('@/pages/(main)/product-duplicate-edit'),
 );
 const PaymentSlipPage = lazy(() => import('@/pages/(main)/payment-slip'));
+const ProfilePage = lazy(() => import('@/pages/(main)/profile'));
 
 const routes = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const routes = createBrowserRouter([
       {
         path: '/payment-slip/:orderId',
         element: <PaymentSlipPage />,
+      },
+      {
+        path: '/profile',
+        element: <ProfilePage />,
       },
     ],
   },

@@ -25,6 +25,7 @@ export const BaseApi = createApi({
     'weekly-orders',
     'monthly-orders',
     'yearly-orders',
+    'user-info',
   ],
   endpoints: () => ({}),
 });

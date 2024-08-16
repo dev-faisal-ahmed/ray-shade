@@ -5,11 +5,15 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 const token = getTokenFromLocal();
 const user = decodeUser(token);
 
+console.log(user);
+
 const initialState: UserType | null = {
   _id: user?._id as string,
   name: user?.name as string,
   email: user?.email as string,
   role: user?.role as UserRoleType,
+  address: user?.address,
+  phone: user?.phone,
 };
 
 export const userSlice = createSlice({

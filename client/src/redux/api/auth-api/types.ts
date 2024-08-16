@@ -9,3 +9,12 @@ export type LoginRequestType = {
   email: string;
   password: string;
 };
+
+export type UpdateProfileRequestType = {
+  id: string;
+  payload: {
+    name: string;
+    address: string;
+    phone: string;
+  };
+};

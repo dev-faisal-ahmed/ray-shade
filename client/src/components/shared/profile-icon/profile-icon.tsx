@@ -34,7 +34,7 @@ export function ProfileIcon({
   };
   return (
     <div className='flex items-center gap-3'>
-      <h2 className='text-lg font-semibold'>{name}</h2>
+      <h2 className='hidden text-lg font-semibold md:block'>{name}</h2>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div

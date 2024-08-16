@@ -1,5 +1,7 @@
+import { jwtSecret } from '../../../config/config';
 import { AuthModel } from '../auth-model';
 import { UpdateUserPayloadType } from '../auth-validation';
+import jwt from 'jsonwebtoken';
 
 export async function UpdateUser(
   userId: string,
@@ -10,5 +12,19 @@ export async function UpdateUser(
     { $set: payload }
   );
 
-  return user;
+  const token = jwt.sign(
+    {
+      _id: user._id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+      phone: user.phone,
+      address: user.address,
+    },
+
+    jwtSecret,
+    { expiresIn: '30d' }
+  );
+
+  return token;
 }
